@@ -16,6 +16,7 @@ app.use(
     allow: false,
   })
 );
+app.use(helmet.noCache())
 
 module.exports = app;
 const api = require("./server.js");
