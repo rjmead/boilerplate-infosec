@@ -16,7 +16,15 @@ app.use(
     allow: false,
   })
 );
-app.use(helmet.noCache())
+app.use(helmet.noCache());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "default-src": ["'self'"],
+      "script-src": ["'self'", "trusted-cdn.com"]
+    },
+  })
+);
 
 module.exports = app;
 const api = require("./server.js");
